@@ -51,7 +51,7 @@ func (b *Book) BooksGetter() []primitive.M{
 		   }
 		   Books=append(Books, book)
 		}
-	
+	defer cursor.Close(context.Background())
 	return Books
 }
 
