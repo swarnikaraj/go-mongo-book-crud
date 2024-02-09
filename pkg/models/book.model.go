@@ -3,6 +3,7 @@ package models
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"github.com/swarnikaraj/go-mongo-book-crud/pkg/config"
 	"go.mongodb.org/mongo-driver/bson"
@@ -58,3 +59,17 @@ func ( b *Book) BookUpdater(updateFields map[string]interface{}, Id string) (*Bo
 	}
 	return book, nil
 }
+
+
+func (b *Book) DeleteOne(Id string) (int64){
+   id,_:=primitive.ObjectIDFromHex(Id)
+   filter:=bson.M{"_id":id}
+   result,err:=collection.DeleteOne(context.Background(),filter)
+if err!=nil{
+log.Fatal(err)
+}
+   
+   return result.DeletedCount
+}
+
+

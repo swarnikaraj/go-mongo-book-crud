@@ -51,6 +51,18 @@ func UpdateBook(w http.ResponseWriter, r *http.Request){
 	
 	w.Header().Set("Content-Type","application/json")
 	w.WriteHeader(http.StatusAccepted)
-   w.Write(updatedBookJSON)
+    w.Write(updatedBookJSON)
+
+}
+
+
+func DeleteOneBook(w http.ResponseWriter,r *http.Request){
+	vars:=mux.Vars(r)
+	Id:=vars["id"]
+	delRes:=BookModel.DeleteOne(Id)
+    res,_:=json.Marshal(delRes)
+	w.Header().Set("Content-Type","application/json")
+	w.WriteHeader(http.StatusAccepted)
+	w.Write(res)
 
 }
