@@ -37,9 +37,21 @@ func (b *Book) BookCreator() *Book{
 }
 
 
-func (b *Book) BooksGetter() []Book{
-	var Books []Book
-	collection.Find(context.Background(),&Books)
+func (b *Book) BooksGetter() []primitive.M{
+	var Books []primitive.M
+	cursor,err:=collection.Find(context.Background(),bson.D{{}})
+
+	  if err!=nil{
+		log.Fatal(err)
+	  }
+		for cursor.Next(context.TODO()){
+			var book bson.M
+           if err:=cursor.Decode(&book); err!=nil{
+			log.Fatal(err)
+		   }
+		   Books=append(Books, book)
+		}
+	
 	return Books
 }
 
