@@ -66,3 +66,11 @@ func DeleteOneBook(w http.ResponseWriter,r *http.Request){
 	w.Write(res)
 
 }
+
+func DeleteAll (w http.ResponseWriter,r *http.Request){
+	delRes:=BookModel.DeleteAllRecords()
+	res,_:=json.Marshal(delRes)
+	w.Header().Set("Content-Type","application/json")
+	w.WriteHeader(http.StatusAccepted)
+	w.Write(res)
+}

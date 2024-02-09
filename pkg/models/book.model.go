@@ -72,4 +72,12 @@ log.Fatal(err)
    return result.DeletedCount
 }
 
+func (b *Book) DeleteAllRecords() int64{
+	result, err:=collection.DeleteMany(context.Background(),bson.D{{}},nil)
+	if err!=nil{
+		log.Fatal(err)
+	}
+	return result.DeletedCount
+}
+
 
