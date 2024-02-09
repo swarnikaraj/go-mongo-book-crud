@@ -7,7 +7,7 @@ import (
 	"github.com/swarnikaraj/go-mongo-book-crud/pkg/models"
 	"github.com/swarnikaraj/go-mongo-book-crud/pkg/utils"
 )
-var book models.Book
+var BookModel models.Book
 func CreateBook(w http.ResponseWriter, r *http.Request){
 
 	var userInstance =&models.Book{}
@@ -24,7 +24,7 @@ func CreateBook(w http.ResponseWriter, r *http.Request){
 
 
 func GetBooks(w http.ResponseWriter, r *http.Request){
-	books:=book.BooksGetter()
+	books:=BookModel.BooksGetter()
 	res, _:=json.Marshal(books)
 	w.Header().Set("Content-Type","application/json")
 	w.WriteHeader(http.StatusAccepted)

@@ -1,7 +1,11 @@
 package routes
 
-import "github.com/gorilla/mux"
+import (
+	"github.com/gorilla/mux"
+	"github.com/swarnikaraj/go-mongo-book-crud/pkg/controllers"
+)
 
 var BookRouter = func(router *mux.Router){
-	
+	router.HandleFunc("/getAll",controllers.GetBooks).Methods("GET")
+	router.HandleFunc("/create", controllers.CreateBook).Methods("POST")
 }

@@ -36,7 +36,7 @@ func (b *Book) BookCreator() *Book{
 
 
 func (b *Book) BooksGetter() []Book{
-	var books []Book
-	collection.Find(context.Background(),&books)
-	return books
+	var Books []Book
+	collection.Find(context.Background(),&Books)
+	return Books
 }
