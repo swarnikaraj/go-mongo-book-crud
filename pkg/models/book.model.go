@@ -14,7 +14,7 @@ import (
 var collection *mongo.Collection
 
 type Book struct{ 
- Id primitive.ObjectID `json:"_id omitempty" bson:"_id omitempty"`
+ Id     primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
  Name string `json:"name"`
  Author string `json:"author"`
 }
